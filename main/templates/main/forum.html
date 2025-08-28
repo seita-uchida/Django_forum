@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forum アプリケーション</title>
+</head>
+
+<body>
+    <h1>掲示板</h1>
+    <h2>{{ topic.name }}</h2>
+    <table>
+        <tr>
+            <th>投稿内容</th>
+            <th>投稿日時</th>
+        </tr>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.content }}</td>
+                <td>{{ message.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'index' %}">ホームへ</a>
+</body>
+
+</html>
