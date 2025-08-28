@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Topic, Message
 
@@ -25,3 +25,9 @@ def forum(request, topic_name):
         "topic": topic
     }
     return render(request, "main/forum.html", context)
+
+
+def delete_message(request, topic_name, pk):
+    message = get_object_or_404(Message, pk=pk)
+    message.delete()
+    return redirect("forum", topic_name=topic_name)
