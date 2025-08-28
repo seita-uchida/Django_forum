@@ -21,6 +21,11 @@
             </tr>
         {% endfor %}
     </table>
+    <form action="{% url 'forum' topic.name %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="message">
+        <input type="submit" value="投稿">
+    </form>
     <a href="{% url 'index' %}">ホームへ</a>
 </body>
 
